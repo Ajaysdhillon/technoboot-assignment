@@ -13,6 +13,10 @@ function Dashboard() {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+
+  const handleEdit = () => {};
+
+  const handleDelete = () => {};
   return (
     <div className="container">
       {!isAdding && !isEditing && (
@@ -24,6 +28,22 @@ function Dashboard() {
             handleDelete={handleDelete}
           />
         </>
+      )}
+      {isAdding && (
+        <Add
+          studnets={students}
+          setStudnets={setStudents}
+          setIsAdding={setIsAdding}
+        />
+      )}
+
+      {isEditing && (
+        <Edit
+          students={students}
+          selectedStudent={selectedStudent}
+          setStudents={setStudents}
+          setIsEditing={setIsEditing}
+        />
       )}
     </div>
   );

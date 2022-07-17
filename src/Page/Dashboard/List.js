@@ -1,6 +1,6 @@
 import React from "react";
 
-function List() {
+function List({ students, handleEdit, handleDelete }) {
   return <div>List</div>;
 }
 
