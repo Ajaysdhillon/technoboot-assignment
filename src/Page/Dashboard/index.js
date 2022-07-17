@@ -59,8 +59,8 @@ function Dashboard() {
       )}
       {isAdding && (
         <Add
-          studnets={students}
-          setStudnets={setStudents}
+          students={students}
+          setStudents={setStudents}
           setIsAdding={setIsAdding}
         />
       )}
