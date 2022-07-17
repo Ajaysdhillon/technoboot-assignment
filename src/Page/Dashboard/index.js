@@ -14,9 +14,37 @@ function Dashboard() {
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleEdit = () => {};
+  const handleEdit = (id) => {
+    const [student] = students.filter((student) => student.id === id);
 
-  const handleDelete = () => {};
+    setSelectedStudent(student);
+    setIsEditing(true);
+  };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      icon: "warning",
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+    }).then((result) => {
+      if (result.value) {
+        const [student] = students.filter((student) => student.id === id);
+
+        Swal.fire({
+          icon: "success",
+          title: "Deleted!",
+          text: `${student.firstName} ${student.lastName}'s data has been deleted.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+
+        setStudents(students.filter((student) => student.id !== id));
+      }
+    });
+  };
   return (
     <div className="container">
       {!isAdding && !isEditing && (
